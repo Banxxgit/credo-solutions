@@ -196,3 +196,45 @@ a, button {
   line-height: 1;
   user-select: none;
 }
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  /* Reduce card hover lift on mobile for better touch UX */
+  .card-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Smaller grid pattern on mobile */
+  .grid-pattern {
+    background-size: 40px 40px;
+  }
+
+  /* Reduce button lift on mobile */
+  .btn-lift:hover {
+    transform: translateY(-1px);
+  }
+
+  /* Adjust scroll padding for smaller header on mobile */
+  html {
+    scroll-padding-top: 70px;
+  }
+}
+
+/* Ensure minimum touch target sizes */
+button, a, [role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Exception for inline links */
+p a, span a, li a {
+  min-height: auto;
+  min-width: auto;
+}
+
+/* Improve text rendering on mobile */
+@media (max-width: 768px) {
+  body {
+    text-rendering: optimizeSpeed;
+  }
+}

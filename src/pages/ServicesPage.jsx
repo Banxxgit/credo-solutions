@@ -173,10 +173,10 @@ const ServicesPage = ({ setCurrentPage }) => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-surface-light to-white relative overflow-hidden">
+      <section className="py-12 md:py-20 bg-gradient-to-b from-surface-light to-white relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-30" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -187,13 +187,13 @@ const ServicesPage = ({ setCurrentPage }) => {
               Our Services
               <span className="w-8 h-px bg-primary" />
             </span>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark mb-6">
+
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark mb-5 md:mb-6">
               Innovating at the Intersection of{' '}
               <span className="gradient-text">Technology and Business</span>
             </h1>
 
-            <p className="text-lg text-dark-50 mb-8">
+            <p className="text-base md:text-lg text-dark-50 mb-6 md:mb-8">
               Explore how our teams help organizations across industries unlock growth through digital transformation.
             </p>
           </motion.div>
@@ -201,43 +201,43 @@ const ServicesPage = ({ setCurrentPage }) => {
       </section>
 
       {/* Services Accordion Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-4">
+      <section className="py-12 md:py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="space-y-3 md:space-y-4">
             {services.map((service, index) => (
               <motion.div
                 key={service.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-surface-light rounded-3xl overflow-hidden"
+                className="bg-surface-light rounded-2xl md:rounded-3xl overflow-hidden"
               >
                 {/* Accordion Header */}
                 <button
                   onClick={() => toggleAccordion(service.id)}
-                  className="w-full flex items-center justify-between p-6 md:p-8 text-left hover:bg-surface-muted transition-colors"
+                  className="w-full flex items-center justify-between p-4 sm:p-6 md:p-8 text-left hover:bg-surface-muted transition-colors min-h-[72px]"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-colors ${
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className={`w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center transition-colors flex-shrink-0 ${
                       openAccordion === service.id ? 'bg-primary' : 'bg-primary/10'
                     }`}>
-                      <service.icon className={`w-7 h-7 transition-colors ${
+                      <service.icon className={`w-5 h-5 sm:w-7 sm:h-7 transition-colors ${
                         openAccordion === service.id ? 'text-white' : 'text-primary'
                       }`} />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <span className="text-xs font-medium text-primary uppercase tracking-wider">
                         {String(index + 1).padStart(2, '0')}
                       </span>
-                      <h3 className="text-xl font-bold text-dark">{service.title}</h3>
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-dark leading-tight">{service.title}</h3>
                     </div>
                   </div>
                   <motion.div
                     animate={{ rotate: openAccordion === service.id ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
-                    className="w-10 h-10 bg-white rounded-full shadow-soft flex items-center justify-center flex-shrink-0 ml-4"
+                    className="w-9 h-9 sm:w-10 sm:h-10 bg-white rounded-full shadow-soft flex items-center justify-center flex-shrink-0 ml-2 sm:ml-4"
                   >
-                    <ChevronDown className="w-5 h-5 text-dark-50" />
+                    <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-dark-50" />
                   </motion.div>
                 </button>
 
@@ -251,26 +251,26 @@ const ServicesPage = ({ setCurrentPage }) => {
                       transition={{ duration: 0.4 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 md:px-8 pb-8">
-                        <p className="text-dark-50 mb-8 pl-0 md:pl-[4.5rem]">
+                      <div className="px-4 sm:px-6 md:px-8 pb-6 md:pb-8">
+                        <p className="text-dark-50 text-sm sm:text-base mb-6 md:mb-8 pl-0 md:pl-[4.5rem]">
                           {service.description}
                         </p>
 
-                        <div className="grid md:grid-cols-2 gap-4 pl-0 md:pl-[4.5rem]">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 pl-0 md:pl-[4.5rem]">
                           {service.offerings.map((offering, idx) => (
                             <motion.div
                               key={idx}
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: idx * 0.05 }}
-                              className="bg-white rounded-2xl p-5 shadow-soft hover:shadow-soft-lg transition-shadow"
+                              className="bg-white rounded-xl md:rounded-2xl p-4 md:p-5 shadow-soft hover:shadow-soft-lg transition-shadow"
                             >
-                              <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                                  <offering.icon className="w-5 h-5 text-primary" />
+                              <div className="flex items-start gap-3 md:gap-4">
+                                <div className="w-9 h-9 md:w-10 md:h-10 bg-primary/10 rounded-lg md:rounded-xl flex items-center justify-center flex-shrink-0">
+                                  <offering.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                                 </div>
-                                <div>
-                                  <h4 className="font-semibold text-dark mb-1 text-sm">
+                                <div className="min-w-0 flex-1">
+                                  <h4 className="font-semibold text-dark mb-1 text-sm leading-tight">
                                     {offering.title}
                                   </h4>
                                   <p className="text-dark-50 text-xs leading-relaxed">
@@ -294,14 +294,14 @@ const ServicesPage = ({ setCurrentPage }) => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mt-16"
+            className="text-center mt-10 md:mt-16"
           >
-            <p className="text-dark-50 mb-6">
+            <p className="text-dark-50 text-sm sm:text-base mb-5 md:mb-6">
               Ready to transform your business with our expert services?
             </p>
             <button
               onClick={() => setCurrentPage('contact')}
-              className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full font-medium btn-lift hover:bg-primary-600"
+              className="inline-flex items-center gap-2 bg-primary text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-medium btn-lift hover:bg-primary-600 min-h-[48px]"
             >
               Get in Touch
               <ArrowRight className="w-5 h-5" />

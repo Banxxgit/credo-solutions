@@ -4,27 +4,35 @@ import { ArrowRight, Cpu, Database, Cloud, Shield, Zap, Box } from 'lucide-react
 
 const HeroSection = ({ setCurrentPage }) => {
   const floatingNodes = [
-    { icon: Cpu, label: 'AI', position: 'top-20 left-10 md:left-20', delay: 0 },
-    { icon: Box, label: 'Blockchain', position: 'top-32 right-10 md:right-24', delay: 0.2 },
-    { icon: Cloud, label: 'Cloud', position: 'bottom-32 left-16 md:left-32', delay: 0.4 },
-    { icon: Shield, label: 'Security', position: 'bottom-20 right-12 md:right-28', delay: 0.6 },
+    { icon: Cpu, label: 'AI', position: 'top-16 left-4 md:top-20 md:left-20', delay: 0 },
+    { icon: Box, label: 'Blockchain', position: 'top-16 right-4 md:top-32 md:right-24', delay: 0.2 },
+    { icon: Cloud, label: 'Cloud', position: 'bottom-16 left-4 md:bottom-32 md:left-32', delay: 0.4 },
+    { icon: Shield, label: 'Security', position: 'bottom-16 right-4 md:bottom-20 md:right-28', delay: 0.6 },
   ];
 
   const trustedLogos = [
     'Boltshift', 'Lightbox', 'FeatherDev', 'Spherule', 'GlobalBank', 'Nietzsche'
   ];
 
+  // Simplified mobile icons for the hero
+  const mobileIcons = [
+    { icon: Cpu, label: 'AI' },
+    { icon: Box, label: 'Blockchain' },
+    { icon: Cloud, label: 'Cloud' },
+    { icon: Shield, label: 'Security' },
+  ];
+
   return (
     <section className="relative min-h-screen pt-20 overflow-hidden bg-white">
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 grid-pattern opacity-50" />
-      
-      {/* Gradient Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+      {/* Gradient Orbs */}
+      <div className="absolute top-1/4 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-64 md:w-96 h-64 md:h-96 bg-primary/5 rounded-full blur-3xl" />
+
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12 md:py-24">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -42,21 +50,21 @@ const HeroSection = ({ setCurrentPage }) => {
               Next-Gen Technology Solutions
             </motion.div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark leading-tight mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark leading-tight mb-5 md:mb-6">
               Empowering the Next Wave of{' '}
               <span className="gradient-text">Digital Transformation</span>
             </h1>
 
-            <p className="text-lg text-dark-50 mb-8 max-w-xl mx-auto lg:mx-0">
+            <p className="text-base md:text-lg text-dark-50 mb-6 md:mb-8 max-w-xl mx-auto lg:mx-0">
               From AI to Blockchain, we help organizations reimagine what's possible, building scalable, secure, and intelligent solutions that drive real business outcomes.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setCurrentPage('services')}
-                className="inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded-full font-medium btn-lift hover:bg-primary-600"
+                className="inline-flex items-center justify-center gap-2 bg-primary text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-medium btn-lift hover:bg-primary-600 min-h-[48px]"
               >
                 Discover More
                 <ArrowRight className="w-5 h-5" />
@@ -65,19 +73,42 @@ const HeroSection = ({ setCurrentPage }) => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setCurrentPage('contact')}
-                className="inline-flex items-center justify-center gap-2 bg-white text-dark px-8 py-4 rounded-full font-medium border-2 border-surface-muted hover:border-primary/30 transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-white text-dark px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-medium border-2 border-surface-muted hover:border-primary/30 transition-colors min-h-[48px]"
               >
                 Get in Touch
               </motion.button>
             </div>
           </motion.div>
 
-          {/* Node Visualization */}
+          {/* Mobile Tech Icons - Horizontal scroll */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex lg:hidden justify-center gap-3 mt-8"
+          >
+            {mobileIcons.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.5 + index * 0.1 }}
+                className="flex flex-col items-center"
+              >
+                <div className="w-14 h-14 bg-white rounded-2xl shadow-soft flex items-center justify-center mb-1.5">
+                  <item.icon className="w-6 h-6 text-primary" />
+                </div>
+                <span className="text-xs font-medium text-dark-50">{item.label}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Node Visualization - Hidden on mobile, shown on lg+ */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative h-[400px] md:h-[500px] lg:h-[600px]"
+            className="relative h-[500px] lg:h-[600px] hidden lg:block"
           >
             {/* Central Hub */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -189,10 +220,10 @@ const HeroSection = ({ setCurrentPage }) => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
-          className="mt-20 pt-12 border-t border-surface-muted"
+          className="mt-12 md:mt-20 pt-8 md:pt-12 border-t border-surface-muted"
         >
-          <p className="text-center text-dark-50 text-sm mb-8">Trusted by innovative companies worldwide</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+          <p className="text-center text-dark-50 text-sm mb-6 md:mb-8">Trusted by innovative companies worldwide</p>
+          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 md:gap-16">
             {trustedLogos.map((logo, index) => (
               <motion.div
                 key={index}

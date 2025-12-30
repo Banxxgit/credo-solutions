@@ -79,9 +79,9 @@ const TestimonialsSection = () => {
   const visibleTestimonials = testimonials.slice(currentIndex * 2, currentIndex * 2 + 2);
 
   return (
-    <section className="py-20 bg-surface-light relative overflow-hidden">
+    <section className="py-16 md:py-20 bg-surface-light relative overflow-hidden">
       {/* World Map Background */}
-      <div className="absolute inset-0 opacity-30">
+      <div className="absolute inset-0 opacity-30 hidden sm:block">
         <svg viewBox="0 0 1200 600" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
           <defs>
             <pattern id="dotPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
@@ -125,26 +125,26 @@ const TestimonialsSection = () => {
         </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-10 md:mb-16"
         >
           <span className="inline-flex items-center gap-2 text-primary font-medium text-sm mb-4">
             <span className="w-8 h-px bg-primary" />
             Testimonials
             <span className="w-8 h-px bg-primary" />
           </span>
-          
-          <h2 className="text-3xl md:text-4xl font-bold text-dark mb-6">
+
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-dark mb-5 md:mb-6">
             Built on Trust.{' '}
             <span className="gradient-text">Driven by Results.</span>
           </h2>
 
-          <p className="text-dark-50">
+          <p className="text-dark-50 text-sm sm:text-base">
             We believe technology works best when people trust the team behind it. From global enterprises to fast-growing startups, our partners share one thing in common — measurable success powered by Credo Solutions.
           </p>
         </motion.div>
@@ -158,7 +158,7 @@ const TestimonialsSection = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.5 }}
-              className="grid md:grid-cols-2 gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
             >
               {visibleTestimonials.map((testimonial, index) => (
                 <motion.div
@@ -166,35 +166,35 @@ const TestimonialsSection = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-3xl p-8 shadow-soft-lg relative"
+                  className="bg-white rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 shadow-soft-lg relative"
                 >
                   {/* Quote icon */}
-                  <div className="absolute -top-4 left-8">
-                    <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
-                      <Quote className="w-5 h-5 text-white" />
+                  <div className="absolute -top-3 sm:-top-4 left-5 sm:left-8">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-primary rounded-lg sm:rounded-xl flex items-center justify-center">
+                      <Quote className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     </div>
                   </div>
 
                   {/* Stars */}
-                  <div className="flex gap-1 mb-4 pt-4">
+                  <div className="flex gap-1 mb-3 sm:mb-4 pt-3 sm:pt-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                      <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-primary text-primary" />
                     ))}
                   </div>
 
                   {/* Quote */}
-                  <p className="text-dark-400 mb-6 leading-relaxed italic">
+                  <p className="text-dark-400 mb-5 sm:mb-6 leading-relaxed italic text-sm sm:text-base">
                     "{testimonial.quote}"
                   </p>
 
                   {/* Author */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-600 rounded-full flex items-center justify-center text-white font-bold">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-primary-600 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base">
                       {testimonial.author.split(' ').map(n => n[0]).join('')}
                     </div>
                     <div>
-                      <p className="font-semibold text-dark">{testimonial.author}</p>
-                      <p className="text-dark-50 text-sm">{testimonial.role}</p>
+                      <p className="font-semibold text-dark text-sm sm:text-base">{testimonial.author}</p>
+                      <p className="text-dark-50 text-xs sm:text-sm">{testimonial.role}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -203,21 +203,21 @@ const TestimonialsSection = () => {
           </AnimatePresence>
 
           {/* Navigation */}
-          <div className="flex items-center justify-center gap-4 mt-8">
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mt-6 md:mt-8">
             <button
               onClick={prevSlide}
-              className="w-12 h-12 bg-white rounded-full shadow-soft flex items-center justify-center text-dark-50 hover:text-primary hover:shadow-soft-lg transition-all"
+              className="w-11 h-11 sm:w-12 sm:h-12 bg-white rounded-full shadow-soft flex items-center justify-center text-dark-50 hover:text-primary hover:shadow-soft-lg transition-all"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            
-            <div className="flex gap-2">
+
+            <div className="flex gap-1.5 sm:gap-2">
               {[...Array(Math.ceil(testimonials.length / 2))].map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentIndex ? 'w-8 bg-primary' : 'bg-dark-50/30'
+                  className={`h-2 rounded-full transition-all ${
+                    index === currentIndex ? 'w-6 sm:w-8 bg-primary' : 'w-2 bg-dark-50/30'
                   }`}
                 />
               ))}
@@ -225,7 +225,7 @@ const TestimonialsSection = () => {
 
             <button
               onClick={nextSlide}
-              className="w-12 h-12 bg-white rounded-full shadow-soft flex items-center justify-center text-dark-50 hover:text-primary hover:shadow-soft-lg transition-all"
+              className="w-11 h-11 sm:w-12 sm:h-12 bg-white rounded-full shadow-soft flex items-center justify-center text-dark-50 hover:text-primary hover:shadow-soft-lg transition-all"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
