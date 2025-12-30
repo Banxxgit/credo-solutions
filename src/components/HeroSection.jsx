@@ -82,10 +82,10 @@ const HeroSection = ({ setCurrentPage }) => {
             {/* Central Hub */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
               <motion.div
-                animate={{ 
+                animate={{
                   boxShadow: [
-                    '0 0 0 0 rgba(255, 145, 86, 0.3)',
-                    '0 0 0 30px rgba(255, 145, 86, 0)',
+                    '0 0 0 0 rgba(84, 180, 227, 0.3)',
+                    '0 0 0 30px rgba(84, 180, 227, 0)',
                   ]
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
@@ -137,8 +137,8 @@ const HeroSection = ({ setCurrentPage }) => {
                     />
                     <defs>
                       <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#FF9156" stopOpacity="0.5" />
-                        <stop offset="100%" stopColor="#FF9156" stopOpacity="0" />
+                        <stop offset="0%" stopColor="#54B4E3" stopOpacity="0.5" />
+                        <stop offset="100%" stopColor="#54B4E3" stopOpacity="0" />
                       </linearGradient>
                     </defs>
                   </svg>

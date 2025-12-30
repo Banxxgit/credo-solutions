@@ -8,17 +8,17 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#FF9156',
-          50: '#FFF4EE',
-          100: '#FFE9DD',
-          200: '#FFD3BB',
-          300: '#FFBD99',
-          400: '#FFA777',
-          500: '#FF9156',
-          600: '#FF6A1F',
-          700: '#E74D00',
-          800: '#AF3A00',
-          900: '#772700',
+          DEFAULT: '#54B4E3',
+          50: '#EEF7FC',
+          100: '#D5ECF8',
+          200: '#AADAF2',
+          300: '#7FC8EB',
+          400: '#6BBEE6',
+          500: '#54B4E3',
+          600: '#3AA0D3',
+          700: '#2A82B0',
+          800: '#1F6489',
+          900: '#154562',
         },
         dark: {
           DEFAULT: '#22282B',
@@ -44,7 +44,7 @@ export default {
         'soft': '0 4px 20px -2px rgba(34, 40, 43, 0.08)',
         'soft-lg': '0 10px 40px -10px rgba(34, 40, 43, 0.12)',
         'soft-xl': '0 20px 60px -15px rgba(34, 40, 43, 0.15)',
-        'glow': '0 0 40px -10px rgba(255, 145, 86, 0.3)',
+        'glow': '0 0 40px -10px rgba(84, 180, 227, 0.3)',
       },
       borderRadius: {
         '4xl': '2rem',

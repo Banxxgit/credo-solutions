@@ -85,13 +85,13 @@ const TestimonialsSection = () => {
         <svg viewBox="0 0 1200 600" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
           <defs>
             <pattern id="dotPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1" fill="#FF9156" fillOpacity="0.2" />
+              <circle cx="2" cy="2" r="1" fill="#54B4E3" fillOpacity="0.2" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#dotPattern)" />
           
           {/* Stylized world map continents */}
-          <g fill="#FF9156" fillOpacity="0.08">
+          <g fill="#54B4E3" fillOpacity="0.08">
             {/* North America */}
             <path d="M150 120 Q200 100 280 130 Q320 150 300 200 Q280 250 230 260 Q180 250 150 200 Q130 160 150 120Z" />
             {/* South America */}
@@ -107,7 +107,7 @@ const TestimonialsSection = () => {
           </g>
           
           {/* Connection lines */}
-          <g stroke="#FF9156" strokeOpacity="0.15" strokeWidth="1" fill="none" strokeDasharray="5,5">
+          <g stroke="#54B4E3" strokeOpacity="0.15" strokeWidth="1" fill="none" strokeDasharray="5,5">
             <path d="M200 180 Q400 150 550 160" />
             <path d="M550 160 Q700 180 800 200" />
             <path d="M250 350 Q450 300 550 280" />
@@ -115,7 +115,7 @@ const TestimonialsSection = () => {
           </g>
           
           {/* Connection dots */}
-          <g fill="#FF9156">
+          <g fill="#54B4E3">
             <circle cx="200" cy="180" r="4" fillOpacity="0.5" />
             <circle cx="550" cy="160" r="4" fillOpacity="0.5" />
             <circle cx="800" cy="200" r="4" fillOpacity="0.5" />
