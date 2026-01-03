@@ -314,7 +314,7 @@ p a, span a, li a {
 
 /* Avatar styling for testimonials */
 .avatar-border {
-  @apply border-3 border-primary-light;
+  @apply border-2 border-primary-light;
 }
 
 /* Trusted by section company text */
