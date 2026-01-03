@@ -1,38 +1,37 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Cpu, Database, Cloud, Shield, Zap, Box } from 'lucide-react';
+import { ArrowRight, Cpu, Cloud, Box, Zap } from 'lucide-react';
 
 const HeroSection = ({ setCurrentPage }) => {
-  const floatingNodes = [
-    { icon: Cpu, label: 'AI', position: 'top-16 left-4 md:top-20 md:left-20', delay: 0 },
-    { icon: Box, label: 'Blockchain', position: 'top-16 right-4 md:top-32 md:right-24', delay: 0.2 },
-    { icon: Cloud, label: 'Cloud', position: 'bottom-16 left-4 md:bottom-32 md:left-32', delay: 0.4 },
-    { icon: Shield, label: 'Security', position: 'bottom-16 right-4 md:bottom-20 md:right-28', delay: 0.6 },
-  ];
-
   const trustedLogos = [
     'Boltshift', 'Lightbox', 'FeatherDev', 'Spherule', 'GlobalBank', 'Nietzsche'
   ];
 
+  // Floating UI cards configuration
+  const floatingCards = [
+    { icon: Cpu, label: 'AI & ML', position: 'top-8 right-0 md:top-12 md:right-4', delay: 0 },
+    { icon: Box, label: 'Blockchain', position: 'bottom-24 right-8 md:bottom-32 md:right-0', delay: 0.2 },
+    { icon: Cloud, label: 'Cloud', position: 'bottom-8 left-0 md:bottom-12 md:left-4', delay: 0.4 },
+  ];
+
   // Simplified mobile icons for the hero
   const mobileIcons = [
-    { icon: Cpu, label: 'AI' },
+    { icon: Cpu, label: 'AI & ML' },
     { icon: Box, label: 'Blockchain' },
     { icon: Cloud, label: 'Cloud' },
-    { icon: Shield, label: 'Security' },
   ];
 
   return (
     <section className="relative min-h-screen pt-20 overflow-hidden bg-white">
-      {/* Background Grid Pattern */}
-      <div className="absolute inset-0 grid-pattern opacity-50" />
+      {/* Background Grid Pattern with fade */}
+      <div className="absolute inset-0 grid-pattern-fade opacity-50" />
 
       {/* Gradient Orbs */}
       <div className="absolute top-1/4 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-64 md:w-96 h-64 md:h-96 bg-primary/5 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12 md:py-24">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -50,12 +49,12 @@ const HeroSection = ({ setCurrentPage }) => {
               Next-Gen Technology Solutions
             </motion.div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark leading-tight mb-5 md:mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark leading-tight mb-5 md:mb-6 tracking-tight">
               Empowering the Next Wave of{' '}
               <span className="gradient-text">Digital Transformation</span>
             </h1>
 
-            <p className="text-base md:text-lg text-dark-50 mb-6 md:mb-8 max-w-xl mx-auto lg:mx-0">
+            <p className="text-base md:text-lg text-dark-50 mb-6 md:mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
               From AI to Blockchain, we help organizations reimagine what's possible, building scalable, secure, and intelligent solutions that drive real business outcomes.
             </p>
 
@@ -103,88 +102,117 @@ const HeroSection = ({ setCurrentPage }) => {
             ))}
           </motion.div>
 
-          {/* Node Visualization - Hidden on mobile, shown on lg+ */}
+          {/* Geometric Composition - Hidden on mobile, shown on lg+ */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative h-[500px] lg:h-[600px] hidden lg:block"
+            className="relative h-[500px] lg:h-[550px] hidden lg:block"
           >
-            {/* Central Hub */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <motion.div
-                animate={{
-                  boxShadow: [
-                    '0 0 0 0 rgba(84, 180, 227, 0.3)',
-                    '0 0 0 30px rgba(84, 180, 227, 0)',
-                  ]
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="relative w-32 h-32 md:w-40 md:h-40 bg-white rounded-3xl shadow-soft-xl flex items-center justify-center"
-              >
-                <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-primary to-primary-600 rounded-2xl flex items-center justify-center">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className="w-10 h-10 md:w-12 md:h-12 text-white"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                    <path d="M2 17l10 5 10-5" />
-                    <path d="M2 12l10 5 10-5" />
-                  </svg>
-                </div>
-              </motion.div>
-            </div>
+            {/* SVG Connection Lines */}
+            <svg
+              className="absolute inset-0 w-full h-full pointer-events-none"
+              style={{ zIndex: 0 }}
+            >
+              <defs>
+                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#54B4E3" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="#54B4E3" stopOpacity="0.05" />
+                </linearGradient>
+              </defs>
+              {/* Dashed connection lines */}
+              <path
+                d="M 200 150 Q 280 200 300 280"
+                stroke="url(#lineGradient)"
+                strokeWidth="2"
+                strokeDasharray="8,8"
+                fill="none"
+              />
+              <path
+                d="M 300 280 Q 350 350 280 420"
+                stroke="url(#lineGradient)"
+                strokeWidth="2"
+                strokeDasharray="8,8"
+                fill="none"
+              />
+              <path
+                d="M 300 280 Q 380 300 420 250"
+                stroke="url(#lineGradient)"
+                strokeWidth="2"
+                strokeDasharray="8,8"
+                fill="none"
+              />
+            </svg>
 
-            {/* Floating Nodes */}
-            {floatingNodes.map((node, index) => (
+            {/* Large Light Blue Rounded Rectangle - Center */}
+            <motion.div
+              animate={{ y: [-8, 8, -8] }}
+              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
+              <div className="w-64 h-64 md:w-72 md:h-72 bg-primary-light rounded-[2.5rem] shadow-soft-lg" />
+            </motion.div>
+
+            {/* White Card with Border - Top Right */}
+            <motion.div
+              animate={{ y: [-10, 10, -10] }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+              className="absolute top-16 right-8"
+            >
+              <div className="w-40 h-40 md:w-44 md:h-44 bg-white rounded-3xl border-2 border-surface-muted shadow-soft-lg" />
+            </motion.div>
+
+            {/* Solid Primary Color Square - Bottom Left */}
+            <motion.div
+              animate={{ y: [8, -8, 8] }}
+              transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+              className="absolute bottom-24 left-12"
+            >
+              <div className="w-28 h-28 md:w-32 md:h-32 bg-primary rounded-2xl shadow-glow" />
+            </motion.div>
+
+            {/* Small Dark Square - Accent */}
+            <motion.div
+              animate={{ y: [-5, 5, -5], x: [-3, 3, -3] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute top-32 left-24"
+            >
+              <div className="w-14 h-14 md:w-16 md:h-16 bg-dark rounded-xl" />
+            </motion.div>
+
+            {/* Transparent Bordered Square - Accent */}
+            <motion.div
+              animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute bottom-40 right-24"
+            >
+              <div className="w-10 h-10 border-2 border-primary/40 rounded-lg" />
+            </motion.div>
+
+            {/* Floating UI Cards */}
+            {floatingCards.map((card, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5 + node.delay, type: 'spring' }}
-                className={`absolute ${node.position}`}
+                transition={{ delay: 0.6 + card.delay, type: 'spring', stiffness: 100 }}
+                className={`absolute ${card.position} z-10`}
               >
                 <motion.div
-                  animate={{ y: [-10, 10, -10] }}
-                  transition={{ duration: 4, repeat: Infinity, delay: index * 0.5 }}
-                  className="relative"
+                  animate={{ y: [-6, 6, -6] }}
+                  transition={{ duration: 4 + index, repeat: Infinity, ease: 'easeInOut' }}
                 >
-                  {/* Connection Line */}
-                  <svg
-                    className="absolute top-1/2 left-1/2 w-40 h-40 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                    style={{ zIndex: -1 }}
-                  >
-                    <line
-                      x1="50%"
-                      y1="50%"
-                      x2={index < 2 ? '150%' : '-50%'}
-                      y2={index % 2 === 0 ? '150%' : '-50%'}
-                      stroke="url(#gradient)"
-                      strokeWidth="2"
-                      strokeDasharray="5,5"
-                    />
-                    <defs>
-                      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#54B4E3" stopOpacity="0.5" />
-                        <stop offset="100%" stopColor="#54B4E3" stopOpacity="0" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-
-                  <div className="bg-white rounded-2xl p-4 shadow-soft-lg border border-surface-muted">
-                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-2">
-                      <node.icon className="w-6 h-6 text-primary" />
+                  <div className="bg-white rounded-2xl px-4 py-3 shadow-soft-lg border border-surface-muted flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+                      <card.icon className="w-5 h-5 text-primary" />
                     </div>
-                    <span className="text-sm font-medium text-dark">{node.label}</span>
+                    <span className="text-sm font-medium text-dark">{card.label}</span>
                   </div>
                 </motion.div>
               </motion.div>
             ))}
 
-            {/* Decorative Elements */}
+            {/* Decorative rotating circles */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
@@ -193,50 +221,42 @@ const HeroSection = ({ setCurrentPage }) => {
             <motion.div
               animate={{ rotate: -360 }}
               transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 border border-dotted border-primary/10 rounded-full pointer-events-none"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-72 md:h-72 border border-dotted border-primary/10 rounded-full pointer-events-none"
             />
 
-            {/* Small floating elements */}
+            {/* Small floating dots */}
             <motion.div
               animate={{ y: [-5, 5, -5], x: [-5, 5, -5] }}
               transition={{ duration: 3, repeat: Infinity }}
-              className="absolute top-1/4 left-1/3 w-3 h-3 bg-primary rounded-full"
+              className="absolute top-1/4 left-1/4 w-3 h-3 bg-primary rounded-full"
             />
             <motion.div
               animate={{ y: [5, -5, 5], x: [5, -5, 5] }}
               transition={{ duration: 4, repeat: Infinity }}
-              className="absolute bottom-1/3 right-1/3 w-2 h-2 bg-primary/50 rounded-full"
-            />
-            <motion.div
-              animate={{ scale: [1, 1.5, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="absolute top-1/3 right-1/4 w-4 h-4 border-2 border-primary/30 rounded-full"
+              className="absolute bottom-1/3 right-1/4 w-2 h-2 bg-primary/50 rounded-full"
             />
           </motion.div>
         </div>
 
-        {/* Trusted By Section */}
+        {/* Trusted By Section - Typography only */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
-          className="mt-12 md:mt-20 pt-8 md:pt-12 border-t border-surface-muted"
+          className="mt-16 md:mt-24 pt-8 md:pt-12 border-t border-surface-muted"
         >
           <p className="text-center text-dark-50 text-sm mb-6 md:mb-8">Trusted by innovative companies worldwide</p>
-          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 md:gap-16">
+          <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 md:gap-16">
             {trustedLogos.map((logo, index) => (
-              <motion.div
+              <motion.span
                 key={index}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 + index * 0.1 }}
-                className="flex items-center gap-2 text-dark-50/50 hover:text-dark-50 transition-colors"
+                className="trusted-company cursor-default"
               >
-                <div className="w-8 h-8 rounded-lg bg-surface-muted flex items-center justify-center">
-                  <div className="w-4 h-4 bg-dark-50/20 rounded" />
-                </div>
-                <span className="font-medium text-sm">{logo}</span>
-              </motion.div>
+                {logo}
+              </motion.span>
             ))}
           </div>
         </motion.div>
@@ -247,7 +267,7 @@ const HeroSection = ({ setCurrentPage }) => {
         <svg viewBox="0 0 1440 120" fill="none" className="w-full">
           <path
             d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V120Z"
-            fill="#FAFAFA"
+            fill="#f8fafb"
           />
         </svg>
       </div>

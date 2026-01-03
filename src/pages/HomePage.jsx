@@ -2,8 +2,6 @@ import React from 'react';
 import HeroSection from '../components/HeroSection';
 import AboutSection from '../components/AboutSection';
 import ServicesSection from '../components/ServicesSection';
-import IndustriesSection from '../components/IndustriesSection';
-import WhyChooseSection from '../components/WhyChooseSection';
 import CaseStudiesSection from '../components/CaseStudiesSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 
@@ -13,9 +11,7 @@ const HomePage = ({ setCurrentPage }) => {
       <HeroSection setCurrentPage={setCurrentPage} />
       <AboutSection setCurrentPage={setCurrentPage} />
       <ServicesSection setCurrentPage={setCurrentPage} />
-      <IndustriesSection />
       <CaseStudiesSection />
-      <WhyChooseSection setCurrentPage={setCurrentPage} />
       <TestimonialsSection />
     </div>
   );

@@ -182,15 +182,15 @@ const ServicesPage = ({ setCurrentPage }) => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <span className="inline-flex items-center gap-2 text-primary font-medium text-sm mb-4">
-              <span className="w-8 h-px bg-primary" />
+            <span className="inline-flex items-center gap-3 text-primary font-semibold text-sm uppercase tracking-wider mb-5">
+              <span className="w-10 h-0.5 bg-primary" />
               Our Services
-              <span className="w-8 h-px bg-primary" />
+              <span className="w-10 h-0.5 bg-primary" />
             </span>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark mb-5 md:mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark mb-5 md:mb-6 tracking-tight">
               Innovating at the Intersection of{' '}
-              <span className="gradient-text">Technology and Business</span>
+              <span className="text-primary">Technology and Business</span>
             </h1>
 
             <p className="text-base md:text-lg text-dark-50 mb-6 md:mb-8">

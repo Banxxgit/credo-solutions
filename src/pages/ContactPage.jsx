@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
+import {
   Mail, MapPin, Phone, Send, ChevronDown,
-  MessageSquare, Clock, CheckCircle2
+  Clock, CheckCircle2
 } from 'lucide-react';
 
 const ContactPage = () => {
@@ -47,7 +47,6 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate form submission
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
@@ -57,131 +56,81 @@ const ContactPage = () => {
 
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-surface-light to-white relative overflow-hidden">
-        <div className="absolute inset-0 grid-pattern opacity-30" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <span className="inline-flex items-center gap-2 text-primary font-medium text-sm mb-4">
-              <span className="w-8 h-px bg-primary" />
-              Contact Us
-              <span className="w-8 h-px bg-primary" />
-            </span>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark mb-6">
-              Let's Build Something{' '}
-              <span className="gradient-text">Great Together</span>
-            </h1>
-
-            <p className="text-lg text-dark-50 mb-8">
-              We're ready to collaborate on your next project — whether it's modernizing legacy systems, integrating AI, or designing digital infrastructure for the future.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Contact Form & Info Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Contact Info */}
+      {/* Contact Form Section - Clean Layout */}
+      <section className="py-20 md:py-36 bg-white">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+            {/* Left: Content + contact info */}
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              <span className="inline-flex items-center gap-2 text-primary font-medium text-sm mb-4">
-                <span className="w-8 h-px bg-primary" />
-                Get in Touch
-              </span>
-              
-              <h2 className="text-3xl md:text-4xl font-bold text-dark mb-6">
-                We'd Love to{' '}
-                <span className="gradient-text">Hear from You</span>
-              </h2>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-dark mb-5 md:mb-6 tracking-tight">
+                Let's Build Something{' '}
+                <span className="text-primary">Great Together</span>
+              </h1>
 
-              <p className="text-dark-50 mb-8">
-                Reach out to our team for project inquiries, partnership discussions, or consultation requests. We'll respond within 24 hours.
+              <p className="text-dark-50 text-base md:text-lg mb-10 leading-relaxed">
+                We're ready to collaborate on your next project — whether it's modernizing legacy systems, integrating AI, or designing digital infrastructure for the future.
               </p>
 
-              {/* Contact Cards */}
-              <div className="space-y-4 mb-8">
+              {/* Contact info items */}
+              <div className="space-y-5">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="flex items-center gap-4 bg-surface-light rounded-2xl p-5"
-                >
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-dark-50">Email Us</p>
-                    <p className="font-semibold text-dark">info@credo-solutions.com</p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
-                  className="flex items-center gap-4 bg-surface-light rounded-2xl p-5"
-                >
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-dark-50">Location</p>
-                    <p className="font-semibold text-dark">Global Operations</p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="flex items-center gap-4 bg-surface-light rounded-2xl p-5"
+                  className="flex items-center gap-4"
                 >
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                    <Clock className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 bg-primary-light rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-sm text-dark-50">Response Time</p>
-                    <p className="font-semibold text-dark">Within 24 Hours</p>
+                    <span className="text-sm text-dark-50 block">Email us at</span>
+                    <strong className="text-dark">info@credo-solutions.com</strong>
                   </div>
                 </motion.div>
-              </div>
 
-              {/* Company Info */}
-              <div className="bg-gradient-to-br from-primary to-primary-600 rounded-3xl p-8 text-white">
-                <h3 className="text-xl font-bold mb-4">Credo Solutions</h3>
-                <p className="text-white/80 text-sm leading-relaxed">
-                  A next-generation technology company helping organizations accelerate their digital transformation through AI, blockchain, and enterprise software solutions.
-                </p>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex items-center gap-4"
+                >
+                  <div className="w-12 h-12 bg-primary-light rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <span className="text-sm text-dark-50 block">Our reach</span>
+                    <strong className="text-dark">Global Operations</strong>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="flex items-center gap-4"
+                >
+                  <div className="w-12 h-12 bg-primary-light rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <span className="text-sm text-dark-50 block">Response time</span>
+                    <strong className="text-dark">Within 24 Hours</strong>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
 
-            {/* Contact Form */}
+            {/* Right: Form in card */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="bg-surface-light rounded-3xl p-8 md:p-10">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
-                    <MessageSquare className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold text-dark">Send a Message</h3>
-                </div>
-
+              <div className="bg-surface-light rounded-3xl p-8 sm:p-10 lg:p-12">
                 <AnimatePresence mode="wait">
                   {isSubmitted ? (
                     <motion.div
@@ -203,32 +152,35 @@ const ContactPage = () => {
                       onSubmit={handleSubmit}
                       className="space-y-5"
                     >
-                      <div>
-                        <label className="block text-sm font-medium text-dark mb-2">Name</label>
-                        <input
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          required
-                          className="w-full px-5 py-4 rounded-2xl border border-surface-muted bg-white text-dark placeholder:text-dark-50 transition-all"
-                          placeholder="Your name"
-                        />
+                      {/* 2-column row for name/email on desktop */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                          <label className="block text-sm font-medium text-dark mb-2">Name</label>
+                          <input
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            required
+                            className="w-full px-5 py-4 rounded-xl border border-surface-muted bg-white text-dark placeholder:text-dark-50/60 transition-all"
+                            placeholder="Your name"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-dark mb-2">Email</label>
+                          <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            required
+                            className="w-full px-5 py-4 rounded-xl border border-surface-muted bg-white text-dark placeholder:text-dark-50/60 transition-all"
+                            placeholder="your@email.com"
+                          />
+                        </div>
                       </div>
 
-                      <div>
-                        <label className="block text-sm font-medium text-dark mb-2">Email</label>
-                        <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          required
-                          className="w-full px-5 py-4 rounded-2xl border border-surface-muted bg-white text-dark placeholder:text-dark-50 transition-all"
-                          placeholder="your@email.com"
-                        />
-                      </div>
-
+                      {/* Full-width company field */}
                       <div>
                         <label className="block text-sm font-medium text-dark mb-2">Company</label>
                         <input
@@ -236,11 +188,12 @@ const ContactPage = () => {
                           name="company"
                           value={formData.company}
                           onChange={handleInputChange}
-                          className="w-full px-5 py-4 rounded-2xl border border-surface-muted bg-white text-dark placeholder:text-dark-50 transition-all"
+                          className="w-full px-5 py-4 rounded-xl border border-surface-muted bg-white text-dark placeholder:text-dark-50/60 transition-all"
                           placeholder="Your company (optional)"
                         />
                       </div>
 
+                      {/* Full-width message field */}
                       <div>
                         <label className="block text-sm font-medium text-dark mb-2">Message</label>
                         <textarea
@@ -248,15 +201,16 @@ const ContactPage = () => {
                           value={formData.message}
                           onChange={handleInputChange}
                           required
-                          rows={4}
-                          className="w-full px-5 py-4 rounded-2xl border border-surface-muted bg-white text-dark placeholder:text-dark-50 transition-all resize-none"
+                          rows={5}
+                          className="w-full px-5 py-4 rounded-xl border border-surface-muted bg-white text-dark placeholder:text-dark-50/60 transition-all resize-none"
                           placeholder="Tell us about your project..."
                         />
                       </div>
 
+                      {/* Full-width submit button */}
                       <button
                         type="submit"
-                        className="w-full inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded-full font-medium btn-lift hover:bg-primary-600"
+                        className="w-full inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded-full font-medium btn-lift hover:bg-primary-600 min-h-[48px]"
                       >
                         Send Message
                         <Send className="w-5 h-5" />
@@ -270,24 +224,24 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 bg-surface-light">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* FAQ Section - Typography only */}
+      <section className="py-20 md:py-36 bg-surface-light">
+        <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-12 md:mb-16"
           >
-            <span className="inline-flex items-center gap-2 text-primary font-medium text-sm mb-4">
-              <span className="w-8 h-px bg-primary" />
+            <span className="inline-flex items-center gap-3 text-primary font-semibold text-sm uppercase tracking-wider mb-5 justify-center">
+              <span className="w-10 h-0.5 bg-primary" />
               FAQ
-              <span className="w-8 h-px bg-primary" />
+              <span className="w-10 h-0.5 bg-primary" />
             </span>
-            
-            <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">
+
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-dark mb-4 tracking-tight">
               Frequently Asked{' '}
-              <span className="gradient-text">Questions</span>
+              <span className="text-primary">Questions</span>
             </h2>
           </motion.div>
 
@@ -303,14 +257,9 @@ const ContactPage = () => {
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between p-6 text-left hover:bg-surface-light/50 transition-colors"
+                  className="w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-surface-light/50 transition-colors min-h-[72px]"
                 >
-                  <div className="flex items-center gap-4">
-                    <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-primary text-sm font-bold flex-shrink-0">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span className="font-semibold text-dark pr-4">{faq.question}</span>
-                  </div>
+                  <span className="font-semibold text-dark pr-4 text-sm sm:text-base">{faq.question}</span>
                   <motion.div
                     animate={{ rotate: openFaq === index ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
@@ -329,8 +278,8 @@ const ContactPage = () => {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-6 pl-[4.5rem]">
-                        <p className="text-dark-50 leading-relaxed">{faq.answer}</p>
+                      <div className="px-5 sm:px-6 pb-6">
+                        <p className="text-dark-50 leading-relaxed text-sm sm:text-base">{faq.answer}</p>
                       </div>
                     </motion.div>
                   )}

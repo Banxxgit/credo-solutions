@@ -26,6 +26,7 @@ body {
   background-color: #FFFFFF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
 }
 
 /* Custom scrollbar */
@@ -34,7 +35,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #FAFAFA;
+  background: #f8fafb;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -44,7 +45,17 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3AA0D3;
+  background: #3a9fd1;
+}
+
+/* Section Label Component */
+.section-label {
+  @apply inline-flex items-center gap-3 text-primary font-semibold text-sm uppercase tracking-wider mb-5;
+}
+
+.section-label::before {
+  content: '';
+  @apply w-10 h-0.5 bg-primary;
 }
 
 /* Connection lines for hero visual */
@@ -87,7 +98,7 @@ body {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #54B4E3 0%, #3AA0D3 100%);
+  background: linear-gradient(135deg, #54B4E3 0%, #3a9fd1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -100,12 +111,21 @@ body {
   -webkit-backdrop-filter: blur(10px);
 }
 
-/* Subtle grid pattern */
+/* Subtle grid pattern with fade mask */
 .grid-pattern {
   background-image:
     linear-gradient(rgba(84, 180, 227, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(84, 180, 227, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
+}
+
+.grid-pattern-fade {
+  background-image:
+    linear-gradient(rgba(84, 180, 227, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(84, 180, 227, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 80%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 80%);
 }
 
 /* Dot pattern */
@@ -124,13 +144,34 @@ body {
   box-shadow: 0 20px 60px -15px rgba(34, 40, 43, 0.15);
 }
 
+/* Service card with left border accent */
+.service-card {
+  @apply bg-surface-light rounded-2xl p-6 md:p-8 relative overflow-hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.service-card::before {
+  content: '';
+  @apply absolute left-0 top-0 w-1 h-0 bg-primary;
+  transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.service-card:hover {
+  @apply bg-white shadow-soft-xl;
+  transform: translateY(-8px);
+}
+
+.service-card:hover::before {
+  @apply h-full;
+}
+
 /* Button hover effect */
 .btn-lift {
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .btn-lift:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: 0 10px 30px -5px rgba(84, 180, 227, 0.4);
 }
 
@@ -187,20 +228,47 @@ a, button {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Large watermark text for footer */
+/* Large watermark text */
 .watermark-text {
-  font-size: clamp(80px, 15vw, 200px);
+  font-size: clamp(80px, 20vw, 250px);
   font-weight: 800;
-  color: rgba(34, 40, 43, 0.03);
+  color: rgba(255, 255, 255, 0.02);
   letter-spacing: -0.02em;
   line-height: 1;
   user-select: none;
+  pointer-events: none;
+}
+
+/* Case study card for dark section */
+.case-card {
+  @apply bg-white/[0.03] border border-white/[0.08] rounded-2xl p-8 md:p-10;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.case-card:hover {
+  @apply bg-white/[0.05] border-white/[0.12];
+  transform: translateY(-4px);
+}
+
+/* Case study tag */
+.case-tag {
+  @apply inline-block text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full mb-4;
+}
+
+/* Testimonial featured quote */
+.featured-quote {
+  @apply text-8xl font-serif text-primary/10 absolute -top-10 -left-5;
+  font-family: Georgia, serif;
 }
 
 /* Mobile-specific improvements */
 @media (max-width: 640px) {
   /* Reduce card hover lift on mobile for better touch UX */
   .card-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  .service-card:hover {
     transform: translateY(-4px);
   }
 
@@ -217,6 +285,11 @@ a, button {
   /* Adjust scroll padding for smaller header on mobile */
   html {
     scroll-padding-top: 70px;
+  }
+
+  /* Hide decorative elements on mobile */
+  .hide-mobile-decorative {
+    display: none;
   }
 }
 
@@ -237,4 +310,15 @@ p a, span a, li a {
   body {
     text-rendering: optimizeSpeed;
   }
+}
+
+/* Avatar styling for testimonials */
+.avatar-border {
+  @apply border-3 border-primary-light;
+}
+
+/* Trusted by section company text */
+.trusted-company {
+  @apply text-dark-50 font-medium text-sm opacity-40 hover:opacity-70;
+  transition: opacity 0.3s ease;
 }
