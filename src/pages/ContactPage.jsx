@@ -9,6 +9,14 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 
+const encode = (data) =>
+  Object.keys(data)
+    .map(
+      (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+    )
+    .join('&');
+
+
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -55,13 +63,30 @@ const ContactPage = () => {
   };
 
   // IMPORTANT: No preventDefault — Netlify needs the POST
-  const handleSubmit = () => {
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': 'contact',
+        ...formData,
+      }),
+    });
+
     setIsSubmitted(true);
+
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({ name: '', email: '', company: '', message: '' });
     }, 3000);
-  };
+  } catch (error) {
+    alert('Something went wrong. Please try again.');
+  }
+};
+
 
   return (
     <div className="pt-20">
