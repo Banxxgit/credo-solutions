@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, ArrowUpRight, Linkedin, Twitter, Github } from 'lucide-react';
+import {
+  Mail,
+  MapPin,
+  ArrowUpRight,
+  Linkedin,
+  Twitter,
+  Github,
+} from 'lucide-react';
+
+/* Netlify form encoding helper */
+const encode = (data) =>
+  Object.keys(data)
+    .map(
+      (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+    )
+    .join('&');
 
 const Footer = ({ setCurrentPage }) => {
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
   const footerLinks = {
     services: [
       { name: 'Software Development', id: 'services' },
@@ -24,6 +42,29 @@ const Footer = ({ setCurrentPage }) => {
     { icon: Github, href: '#', label: 'GitHub' },
   ];
 
+  /* Newsletter submit handler */
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({
+          'form-name': 'newsletter',
+          email,
+        }),
+      });
+
+      setSubscribed(true);
+      setEmail('');
+
+      setTimeout(() => setSubscribed(false), 3000);
+    } catch (err) {
+      alert('Subscription failed. Please try again.');
+    }
+  };
+
   return (
     <footer className="relative bg-surface-light overflow-hidden">
       {/* Newsletter Section */}
@@ -37,28 +78,55 @@ const Footer = ({ setCurrentPage }) => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
               <h3 className="text-2xl md:text-3xl font-bold text-dark mb-2">
-                Let's Connect With Us
+                Let’s Connect With Us
               </h3>
               <p className="text-dark-50">
                 Ready to accelerate your digital transformation?
               </p>
             </div>
-            <div className="flex w-full md:w-auto gap-3">
-              <input
-                type="email"
-                placeholder="Enter email"
-                className="flex-1 md:w-64 px-5 py-3 rounded-full border border-surface-muted bg-surface-light text-dark placeholder:text-dark-50 focus:border-primary"
-              />
-              <button className="bg-primary text-white p-4 rounded-full btn-lift hover:bg-primary-600">
-                <ArrowUpRight className="w-5 h-5" />
-              </button>
-            </div>
+
+            {subscribed ? (
+              <div className="text-primary font-medium">
+                Thanks for subscribing!
+              </div>
+            ) : (
+              <form
+                name="newsletter"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                onSubmit={handleNewsletterSubmit}
+                className="flex w-full md:w-auto gap-3"
+              >
+                {/* Netlify required fields */}
+                <input type="hidden" name="form-name" value="newsletter" />
+                <input type="hidden" name="bot-field" />
+
+                <input
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="Enter email"
+                  className="flex-1 md:w-64 px-5 py-3 rounded-full border border-surface-muted bg-surface-light text-dark placeholder:text-dark-50 focus:border-primary"
+                />
+
+                <button
+                  type="submit"
+                  className="bg-primary text-white p-4 rounded-full btn-lift hover:bg-primary-600"
+                  aria-label="Subscribe"
+                >
+                  <ArrowUpRight className="w-5 h-5" />
+                </button>
+              </form>
+            )}
           </div>
         </motion.div>
 
         {/* Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Brand Column */}
+          {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-6">
               <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
@@ -78,16 +146,19 @@ const Footer = ({ setCurrentPage }) => {
                 Credo<span className="text-primary">Solutions</span>
               </span>
             </div>
+
             <p className="text-dark-50 text-sm leading-relaxed mb-6">
-              Empowering organizations to accelerate digital transformation through AI, blockchain, and enterprise software solutions.
+              Empowering organizations to accelerate digital transformation
+              through AI, blockchain, and enterprise software solutions.
             </p>
+
             <div className="flex gap-3">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 rounded-full bg-white shadow-soft flex items-center justify-center text-dark-50 hover:text-primary hover:shadow-soft-lg transition-all duration-300"
+                  className="w-10 h-10 rounded-full bg-white shadow-soft flex items-center justify-center text-dark-50 hover:text-primary hover:shadow-soft-lg transition-all"
                 >
                   <social.icon className="w-4 h-4" />
                 </a>
@@ -95,7 +166,7 @@ const Footer = ({ setCurrentPage }) => {
             </div>
           </div>
 
-          {/* Services Column */}
+          {/* Services */}
           <div>
             <h4 className="text-dark font-semibold mb-6">Services</h4>
             <ul className="space-y-3">
@@ -103,7 +174,7 @@ const Footer = ({ setCurrentPage }) => {
                 <li key={index}>
                   <button
                     onClick={() => setCurrentPage(link.id)}
-                    className="text-dark-50 hover:text-primary transition-colors text-sm"
+                    className="text-dark-50 hover:text-primary text-sm"
                   >
                     {link.name}
                   </button>
@@ -112,7 +183,7 @@ const Footer = ({ setCurrentPage }) => {
             </ul>
           </div>
 
-          {/* Company Column */}
+          {/* Company */}
           <div>
             <h4 className="text-dark font-semibold mb-6">Company</h4>
             <ul className="space-y-3">
@@ -120,7 +191,7 @@ const Footer = ({ setCurrentPage }) => {
                 <li key={index}>
                   <button
                     onClick={() => setCurrentPage(link.id)}
-                    className="text-dark-50 hover:text-primary transition-colors text-sm"
+                    className="text-dark-50 hover:text-primary text-sm"
                   >
                     {link.name}
                   </button>
@@ -129,17 +200,21 @@ const Footer = ({ setCurrentPage }) => {
             </ul>
           </div>
 
-          {/* Contact Column */}
+          {/* Contact */}
           <div>
             <h4 className="text-dark font-semibold mb-6">Contact</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-primary mt-0.5" />
-                <span className="text-dark-50 text-sm">info@credo-solutions.com</span>
+                <span className="text-dark-50 text-sm">
+                  info@credo-solutions.com
+                </span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary mt-0.5" />
-                <span className="text-dark-50 text-sm">Global Operations</span>
+                <span className="text-dark-50 text-sm">
+                  Global Operations
+                </span>
               </li>
             </ul>
           </div>
@@ -148,10 +223,10 @@ const Footer = ({ setCurrentPage }) => {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-dark/5">
           <div className="flex gap-6 mb-4 md:mb-0">
-            <a href="#" className="text-dark-50 hover:text-primary text-sm transition-colors">
+            <a href="#" className="text-dark-50 hover:text-primary text-sm">
               Terms & Conditions
             </a>
-            <a href="#" className="text-dark-50 hover:text-primary text-sm transition-colors">
+            <a href="#" className="text-dark-50 hover:text-primary text-sm">
               Privacy Policy
             </a>
           </div>
@@ -161,7 +236,7 @@ const Footer = ({ setCurrentPage }) => {
         </div>
       </div>
 
-      {/* Large Watermark Text */}
+      {/* Watermark */}
       <div className="absolute bottom-0 left-0 right-0 pointer-events-none overflow-hidden">
         <div className="watermark-text text-center transform translate-y-1/4">
           CREDO
