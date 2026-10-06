@@ -1,0 +1,4 @@
+# SPA fallback: serve index.html for client-side routes (/services, /about, /contact…).
+# Non-forced rule, so real files (assets, favicon, and "/" itself, where the
+# Netlify Forms AJAX submissions POST) are served as normal.
+/*    /index.html   200
