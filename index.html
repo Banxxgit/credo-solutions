@@ -14,6 +14,13 @@
     <meta property="og:description" content="Credo Solutions designs, builds, integrates and supports software for businesses — with experience across cloud, data and AI, enterprise platforms and blockchain." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!--
+      Perf note (next pass): on a cold load the Geist swap re-wraps the home
+      headline, shifting the hero ~92px (CLS up to ~0.11; ~0.03 when the font is
+      cached). Fix with a size-adjusted local fallback (@font-face with
+      size-adjust / ascent-override matched to Geist) and/or self-hosting +
+      preloading the Geist woff2 instead of display=swap via Google Fonts.
+    -->
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
     <title>Credo Solutions | Technology & Product Engineering</title>
     <script>

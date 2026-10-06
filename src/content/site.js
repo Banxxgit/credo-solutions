@@ -17,7 +17,6 @@ export const nav = [
 ];
 
 export const positioning = {
-  eyebrow: 'Technology & product engineering',
   headline: 'We build the products and systems businesses run on',
   summary:
     'Credo Solutions is a technology and product engineering company. We design, build, integrate and support software for businesses — with experience across cloud, data and AI, enterprise platforms and blockchain.',

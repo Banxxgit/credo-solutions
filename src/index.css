@@ -105,93 +105,114 @@
   animation-delay: var(--enter-delay, 0ms);
 }
 
-/* Hero system (CredoSystem.jsx) -------------------------------------- */
-/* Entrance: grid → base → spine → top arm → joints/labels → product docks.
-   Idle: a 7s cycle in which two signals travel to the product. */
+/* Hero figure (CredoSystem.jsx) — "the cantilever" ---------------------
+   0.0–0.8s  ground draws
+   0.1–0.5s  all parts appear, scattered
+   0.5–1.9s  lower strata move in and seat
+   1.3–2.2s  the slab extends out of the core
+   2.0–3.0s  upper strata seat on it, locking it in
+   3.0–4.4s  the product emerges from the core and travels to the tip
+   4.4s      the slab takes the load, flexes once, holds
+   Idle, once every 14s: one stratum re-seats; the product registers it. */
 
-@keyframes cs-fade {
+.em {
+  --em-paper: #F6F4EF;
+  --em-tint: rgba(21, 24, 26, 0.07);
+  --em-solid-top: #2C3134;
+  --em-solid-side: #0B0D0E;
+  --em-light-top: #E4E0D7;
+  --em-light-side: #D3CEC3;
+}
+
+@keyframes em-draw {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes em-appear {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
-@keyframes cs-grow-x {
-  from { transform: scaleX(0); }
+@keyframes em-seat {
+  from { transform: translate3d(var(--fx), var(--fy), 0) rotate(var(--fr)); }
   to   { transform: none; }
 }
 
-@keyframes cs-grow-y {
-  from { transform: scaleY(0); }
+@keyframes em-extend {
+  from { transform: scaleX(0.08); }
   to   { transform: none; }
 }
 
-@keyframes cs-dock {
-  from { opacity: 0; transform: translate3d(56px, 0, 0); }
-  50%  { opacity: 1; }
-  to   { opacity: 1; transform: none; }
+@keyframes em-emerge {
+  0%   { opacity: 0; transform: translate3d(var(--emerge), 0, 0); }
+  12%  { opacity: 1; }
+  100% { opacity: 1; transform: none; }
 }
 
-@keyframes cs-signal {
-  0%       { stroke-dashoffset: 9; opacity: 0; }
-  2%       { opacity: 1; }
-  30%      { stroke-dashoffset: -91; opacity: 1; }
-  33%, 100% { stroke-dashoffset: -91; opacity: 0; }
+@keyframes em-take-load {
+  0%, 100% { transform: none; }
+  30%      { transform: rotate(0.6deg); }
+  62%      { transform: rotate(-0.1deg); }
 }
 
-@keyframes cs-ring {
-  0%, 29%  { opacity: 0; transform: none; }
-  31%      { opacity: 0.9; transform: none; }
-  52%, 100% { opacity: 0; transform: scale(1.5); }
+@keyframes em-reseat-idle {
+  0%, 100%  { transform: none; }
+  4%, 7%    { transform: translate3d(14px, 0, 0); }
+  12%       { transform: none; }
 }
 
-.cs-grid    { animation: cs-fade 1200ms ease both; }
-.cs-base,
-.cs-top     { transform-box: fill-box; transform-origin: left center; }
-.cs-base    { animation: cs-grow-x 900ms cubic-bezier(0.65, 0, 0.35, 1) 150ms both; }
-.cs-spine   { transform-box: fill-box; transform-origin: center bottom;
-              animation: cs-grow-y 700ms cubic-bezier(0.65, 0, 0.35, 1) 600ms both; }
-.cs-top     { animation: cs-grow-x 900ms cubic-bezier(0.65, 0, 0.35, 1) 850ms both; }
-.cs-pins    { animation: cs-fade 400ms ease 1350ms both; }
-.cs-label   { animation: cs-fade 700ms ease 1450ms both; }
-.cs-product { animation: cs-dock 1000ms cubic-bezier(0.22, 1, 0.36, 1) 1550ms both; }
-.cs-channel { animation: cs-fade 800ms ease 2100ms both; }
-
-.cs-signal {
-  stroke-dasharray: 9 200;
-  stroke-dashoffset: 9;
-  opacity: 0;
-  animation: cs-signal 7s cubic-bezier(0.45, 0, 0.25, 1) 2400ms infinite;
+@keyframes em-respond-idle {
+  0%, 12%, 100% { transform: none; }
+  14%           { transform: translate3d(0, -4px, 0); }
+  18%           { transform: none; }
 }
 
-.cs-ring {
+.em-ground {
+  stroke-dasharray: 1;
+  animation: em-draw 800ms cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+/* All parts appear together, scattered; then each moves into place. */
+.em-stratum {
   transform-box: fill-box;
   transform-origin: center;
-  opacity: 0;
-  animation: cs-ring 7s cubic-bezier(0.22, 1, 0.36, 1) 2400ms infinite;
+  animation:
+    em-appear 500ms ease calc(100ms + var(--i) * 50ms) both,
+    em-seat 950ms cubic-bezier(0.65, 0, 0.35, 1) calc(500ms + var(--i) * 400ms) both;
 }
 
-.cs[data-paused] .cs-signal,
-.cs[data-paused] .cs-ring {
+.em-cast {
+  animation: em-appear 900ms ease 3600ms both;
+}
+
+.em-slab {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: em-extend 900ms cubic-bezier(0.65, 0, 0.35, 1) 1300ms both;
+}
+
+.em-flex {
+  transform-box: view-box;
+  transform-origin: 200px 209px;
+  animation: em-take-load 900ms cubic-bezier(0.22, 1, 0.36, 1) 4400ms both;
+}
+
+.em-product {
+  animation: em-emerge 1400ms cubic-bezier(0.65, 0, 0.35, 1) 3000ms both;
+}
+
+.em-reseat {
+  animation: em-reseat-idle 14s cubic-bezier(0.65, 0, 0.35, 1) 9000ms infinite;
+}
+
+.em-respond {
+  animation: em-respond-idle 14s cubic-bezier(0.22, 1, 0.36, 1) 9000ms infinite;
+}
+
+.em[data-paused] .em-reseat,
+.em[data-paused] .em-respond {
   animation-play-state: paused;
-}
-
-/* Labels are too small to read on phones; the figure stands on its own there. */
-@media (max-width: 639px) {
-  .cs text { display: none; }
-}
-
-/* Hover (pointer devices): the pieces part slightly to show the joints. */
-.cs-x-top,
-.cs-x-base,
-.cs-x-spine,
-.cs-x-product {
-  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@media (hover: hover) {
-  .cs:hover .cs-x-top     { transform: translate(0, -6px); }
-  .cs:hover .cs-x-base    { transform: translate(0, 6px); }
-  .cs:hover .cs-x-spine   { transform: translate(-6px, 0); }
-  .cs:hover .cs-x-product { transform: translate(8px, 0); }
 }
 
 html[data-motion='reduce'] *,
@@ -209,6 +230,3 @@ html[data-motion='reduce'] .reveal {
   transform: none;
 }
 
-html[data-motion='reduce'] .cs:hover [class*='cs-x-'] {
-  transform: none;
-}

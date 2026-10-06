@@ -17,10 +17,8 @@ function Hero() {
   return (
     <section className="relative overflow-hidden pb-16 pt-10 md:pb-24 md:pt-16 lg:pt-20">
       <Container>
-        <p className="eyebrow enter">{positioning.eyebrow}</p>
-
         <h1
-          className="enter mt-8 text-[clamp(2.625rem,6.7vw,7.25rem)] font-normal max-md:[text-wrap:pretty] leading-[0.95] tracking-[-0.045em] md:mt-10 md:max-w-[17ch]"
+          className="enter text-[clamp(2.625rem,6.7vw,7.25rem)] font-normal max-md:[text-wrap:pretty] leading-[0.95] tracking-[-0.045em] md:max-w-[17ch]"
           style={{ '--enter-delay': '80ms' }}
         >
           {positioning.headline}
@@ -37,13 +35,10 @@ function Hero() {
           </div>
 
           <figure
-            className="enter mx-auto w-full max-w-[19rem] sm:max-w-[24rem] lg:col-span-5 lg:col-start-8 lg:-mt-40 lg:mr-0 lg:max-w-[27rem]"
+            className="enter mx-auto w-full max-w-[17rem] sm:max-w-[22rem] lg:col-span-5 lg:col-start-8 lg:-mt-36 lg:mr-0 lg:max-w-[24rem]"
             style={{ '--enter-delay': '120ms' }}
           >
             <CredoSystem />
-            <figcaption className="mt-5 font-mono text-[0.6875rem] uppercase leading-relaxed tracking-[0.06em] text-ink-muted">
-              Fig. 1 — Applications, integration and infrastructure, working as one product.
-            </figcaption>
           </figure>
         </div>
 
