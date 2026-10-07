@@ -61,7 +61,7 @@ export default function AboutPage() {
         <ol className="mt-20 grid gap-x-8 gap-y-12 md:mt-28 md:grid-cols-3">
           {about.values.map((value, i) => (
             <Reveal as="li" key={value.title} delay={i * 90} className="border-t border-line-dark pt-6">
-              <span className="font-mono text-xs text-credo">{String(i + 1).padStart(2, '0')}</span>
+              <span className="font-mono text-xs text-vermilion">{String(i + 1).padStart(2, '0')}</span>
               <h3 className="mt-8 text-[1.5rem] font-normal leading-tight tracking-[-0.025em]">{value.title}</h3>
               <p className="mt-4 max-w-xs text-[0.9375rem] leading-relaxed text-paper/65">{value.body}</p>
             </Reveal>
@@ -111,7 +111,7 @@ export default function AboutPage() {
                 delay={i * 80}
                 className="flex gap-6 border-b border-line-strong py-8 first:border-t md:gap-10"
               >
-                <span className="pt-2 font-mono text-xs text-credo-deep">{String(i + 1).padStart(2, '0')}</span>
+                <span className="num self-start pt-2">{String(i + 1).padStart(2, '0')}</span>
                 <span className="text-title font-normal">{promise}</span>
               </Reveal>
             ))}

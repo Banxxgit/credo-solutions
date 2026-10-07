@@ -65,7 +65,7 @@ export default function NewsletterForm() {
           className="group -mr-2 flex h-11 items-center gap-2 rounded-full px-2 text-sm font-medium text-paper disabled:opacity-50"
         >
           {status === 'sending' ? 'Sending…' : 'Subscribe'}
-          <Arrow direction="e" className="h-4 w-4" />
+          <Arrow direction="e" className="h-4 w-4 transition-colors duration-300 group-hover:text-vermilion" />
         </button>
       </div>
       {status === 'error' && (

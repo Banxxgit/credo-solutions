@@ -49,7 +49,18 @@
 
   .eyebrow::before {
     content: '';
-    @apply h-px w-6 bg-current opacity-60;
+    @apply h-[2px] w-8 bg-vermilion;
+  }
+
+  /* Sequence number with a vermilion lead — the numbering motif on paper.
+     The digits stay ink-muted (vermilion is below text contrast on paper). */
+  .num {
+    @apply inline-flex items-center gap-2 font-mono text-xs text-ink-muted;
+  }
+
+  .num::before {
+    content: '';
+    @apply h-[2px] w-3 bg-vermilion;
   }
 
   .on-ink .eyebrow {
@@ -213,6 +224,16 @@
 .em[data-paused] .em-reseat,
 .em[data-paused] .em-respond {
   animation-play-state: paused;
+}
+
+/* Secondary accent in the hero: the top module of the core is vermilion —
+   the counterpoint to the blue product, and the last part to seat in the
+   assembly. Colour only (vermilion and its own face shades); geometry and
+   motion unchanged. */
+.em > .em-stratum:last-child {
+  color: theme('colors.vermilion.DEFAULT');
+  --em-solid-top: #E47F5E;
+  --em-solid-side: #A9472A;
 }
 
 html[data-motion='reduce'] *,

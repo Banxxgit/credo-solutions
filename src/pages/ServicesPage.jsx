@@ -18,7 +18,7 @@ function ServiceIndex() {
               className="group flex h-full items-start justify-between gap-4 py-5 transition-colors hover:text-credo-deep"
             >
               <span>
-                <span className="block font-mono text-xs text-ink-muted">{String(i + 1).padStart(2, '0')}</span>
+                <span className="num">{String(i + 1).padStart(2, '0')}</span>
                 <span className="mt-3 block text-[1.0625rem] leading-snug tracking-[-0.015em]">{s.short}</span>
               </span>
               <Arrow direction="s" className="mt-0.5 h-4 w-4 text-ink-muted" />
@@ -42,7 +42,7 @@ function ServiceDetail({ service, index }) {
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-28">
             <Reveal>
-              <span className="font-mono text-xs text-credo-deep">{String(index + 1).padStart(2, '0')}</span>
+              <span className="num">{String(index + 1).padStart(2, '0')}</span>
             </Reveal>
             <Reveal as="h2" id={`${service.id}-title`} delay={60} className="mt-6 max-w-[14ch] text-heading font-normal">
               {service.title}

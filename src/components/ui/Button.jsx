@@ -37,7 +37,7 @@ export function Arrow({ direction = 'ne', className = '' }) {
 
 const variants = {
   primary: 'bg-ink text-paper hover:bg-ink-soft',
-  secondary: 'border border-line-strong text-ink hover:border-ink',
+  secondary: 'border border-line-strong text-ink hover:border-vermilion',
   light: 'bg-paper text-ink hover:bg-white',
   outlineLight: 'border border-line-dark text-paper hover:border-paper/60',
 };
@@ -61,7 +61,12 @@ export function Button({ variant = 'primary', size = 'md', arrow = 'ne', classNa
       {...tagProps}
     >
       <span>{children}</span>
-      {arrow && <Arrow direction={arrow} className={size === 'sm' ? 'h-3.5 w-3.5' : 'h-4 w-4'} />}
+      {arrow && (
+        <Arrow
+          direction={arrow}
+          className={`transition-colors duration-300 group-hover:text-vermilion ${size === 'sm' ? 'h-3.5 w-3.5' : 'h-4 w-4'}`}
+        />
+      )}
     </Tag>
   );
 }
@@ -77,7 +82,7 @@ export function ArrowLink({ arrow = 'e', className = '', children, ...props }) {
       <span className="bg-[linear-gradient(currentColor,currentColor)] bg-[length:100%_1px] bg-left-bottom bg-no-repeat pb-0.5 transition-[background-size] duration-500 ease-out group-hover:bg-[length:0%_1px] group-hover:bg-right-bottom">
         {children}
       </span>
-      <Arrow direction={arrow} className="h-4 w-4" />
+      <Arrow direction={arrow} className="h-4 w-4 transition-colors duration-300 group-hover:text-vermilion" />
     </Tag>
   );
 }

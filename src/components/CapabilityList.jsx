@@ -18,7 +18,7 @@ export default function CapabilityList() {
               aria-hidden="true"
               className="absolute inset-y-0 -left-5 -right-5 origin-bottom scale-y-0 bg-paper-deep transition-transform duration-500 ease-out group-hover:scale-y-100 sm:-left-8 sm:-right-8 lg:-left-12 lg:-right-12"
             />
-            <span className="relative pt-2 font-mono text-xs text-ink-muted transition-colors group-hover:text-credo-deep md:col-span-1 md:pt-3">
+            <span className="num relative self-start pt-2 md:col-span-1 md:pt-3">
               {String(i + 1).padStart(2, '0')}
             </span>
             <span className="relative text-title font-normal transition-transform duration-500 ease-out group-hover:translate-x-2 md:col-span-5">
@@ -32,7 +32,7 @@ export default function CapabilityList() {
                   .join(' · ')}
               </span>
             </span>
-            <span className="relative col-start-3 row-start-1 flex h-10 w-10 items-center justify-center rounded-full border border-line-strong transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-paper md:col-span-1 md:col-start-12 md:justify-self-end">
+            <span className="relative col-start-3 row-start-1 flex h-10 w-10 items-center justify-center rounded-full border border-line-strong transition-colors duration-300 group-hover:border-vermilion group-hover:bg-vermilion group-hover:text-ink md:col-span-1 md:col-start-12 md:justify-self-end">
               <Arrow className="h-4 w-4" />
               <span className="sr-only">— view details</span>
             </span>

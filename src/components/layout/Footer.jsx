@@ -26,7 +26,7 @@ export default function Footer() {
       <Container className="pb-10 pt-20 md:pt-28">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5">
-            <p className="max-w-[16ch] text-title font-normal">Notes from Credo, now and then.</p>
+            <p className="max-w-[16ch] text-title font-normal">Notes from Credo, now and then<span className="text-vermilion">.</span></p>
             <p className="mt-4 max-w-sm text-paper/60">
               Leave your email and we’ll keep you posted on what we’re building.
             </p>

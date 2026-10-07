@@ -25,7 +25,7 @@ export default function CopyEmail({ className = '' }) {
         onClick={copy}
         className="inline-flex h-8 items-center gap-2 rounded-full border border-line-strong px-3 font-mono text-[0.6875rem] uppercase tracking-[0.06em] text-ink-muted transition-colors hover:border-ink hover:text-ink"
       >
-        <span aria-hidden="true" className={`h-1.5 w-1.5 rounded-full transition-colors ${copied ? 'bg-credo-deep' : 'bg-ink-faint'}`} />
+        <span aria-hidden="true" className={`h-1.5 w-1.5 rounded-full transition-colors ${copied ? 'bg-vermilion' : 'bg-ink-faint'}`} />
         {copied ? 'Copied' : 'Copy email'}
       </button>
       <span role="status" className="sr-only">

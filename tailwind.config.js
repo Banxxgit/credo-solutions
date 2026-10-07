@@ -23,6 +23,11 @@ export default {
           wash: '#DDEDF5', // full-width colour chapter
           mist: '#EEF5F8',
         },
+        // Secondary accent (test): punctuation only — marks, rules, icons,
+        // and text on ink (≈4.8:1). Not for small text on paper (≈3.4:1).
+        vermilion: {
+          DEFAULT: '#D95F39',
+        },
         line: {
           DEFAULT: 'rgba(21, 24, 26, 0.12)',
           strong: 'rgba(21, 24, 26, 0.22)',

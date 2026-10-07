@@ -131,7 +131,7 @@ export default function HomePage() {
                 delay={i * 70}
                 className="flex items-baseline gap-6 border-b border-line-strong py-5 first:border-t md:gap-10 md:py-6"
               >
-                <span className="font-mono text-xs text-ink-muted">{String(i + 1).padStart(2, '0')}</span>
+                <span className="num">{String(i + 1).padStart(2, '0')}</span>
                 <span className="text-[clamp(2.25rem,4.4vw,4rem)] font-normal leading-none tracking-[-0.04em]">
                   {sector}
                 </span>
