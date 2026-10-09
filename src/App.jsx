@@ -1,41 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import { Route, Routes } from 'react-router-dom';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import ScrollManager from './components/layout/ScrollManager';
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import NotFoundPage from './pages/NotFoundPage';
 
-function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-
-  // Scroll to top when page changes
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentPage]);
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'services':
-        return <ServicesPage setCurrentPage={setCurrentPage} />;
-      case 'about':
-        return <AboutPage setCurrentPage={setCurrentPage} />;
-      case 'contact':
-        return <ContactPage />;
-      default:
-        return <HomePage setCurrentPage={setCurrentPage} />;
-    }
-  };
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-white font-poppins">
-      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      <main>
-        {renderPage()}
+    <>
+      <a
+        href="#main"
+        className="sr-only z-[60] rounded-full bg-ink px-5 py-3 text-sm text-paper focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+      >
+        Skip to content
+      </a>
+      <ScrollManager />
+      <Header />
+      <main id="main" tabIndex={-1} className="outline-none">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
       </main>
-      <Footer setCurrentPage={setCurrentPage} />
-    </div>
+      <Footer />
+    </>
   );
 }
-
-export default App;
